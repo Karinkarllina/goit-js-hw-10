@@ -17,4 +17,24 @@ body {
   padding: 8px;
   max-width: 320px;
   margin-bottom: 16px;
+  margin-left: 50px;
+}
+
+ul {
+  list-style: none;
+}
+
+span {
+font-weight: 500;
+margin-left: 15px;;
+
+}
+
+img {
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+li {
+  display: flex;
 }

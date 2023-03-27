@@ -3,7 +3,7 @@ import debounce from 'lodash.debounce';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { fetchCountries }  from './fetchCountries';
 
-const DEBOUNCE_DELAY = 300;
+const DEBOUNCE_DELAY = 500;
 
 const searchBoxEl = document.querySelector('#search-box');
 const countryListEl = document.querySelector('.country-list');
@@ -15,6 +15,12 @@ searchBoxEl.addEventListener('input', debounce(inputSearch, DEBOUNCE_DELAY));
 function inputSearch(event) {
     event.preventDefault();
     const inputValueSearch = event.target.value.trim();
+
+    if (inputValueSearch === '') {
+        countryListEl.innerHTML = '';
+        countryInfoEl.innerHeight = '';
+    }
+    
 
 fetchCountries(inputValueSearch) 
     .then(data => {
@@ -38,27 +44,20 @@ function showResult(data) {
 
     if (inputLength === 1) {
         countryCardMarkup(data)
-        countryListEl.innerHTML = '';
         countryInfoEl.innerHeight = '';
     }
 
     if (inputLength > 1 && inputLength <= 10) {
         countryListEl.innerHTML = '';
-        countryInfoEl.innerHeight = '';
         createCountriesMarkup(data)
     }
 }
-
-
-
-
-
 
 // РОЗМІТКА!
 
 function countryCardMarkup(data) {
         const cardMarkup = data.map(({ flags, name, capital, population, languages }) => {
-            return `<img src="${flags.svg}" alt="${name}" width="320" height="auto">
+            return `<img src="${flags.svg}" alt="${name}" width="50" height="50">
                 <p> ${name.official}</p>
                 <p>Capital: <span> ${capital}</span></p>
                 <p>Population: <span> ${population}</span></p>
@@ -71,7 +70,7 @@ function countryCardMarkup(data) {
 function createCountriesMarkup(data) {
     const countriesMarkup = data.map((({ name, flags }) => {
         return `<li>
-                     <img src="${flags.svg}" alt="${name}" width="70" height="auto">
+                     <img src="${flags.svg}" alt="${name}" width="30" height="30">
                      <span>${name.official}</span>
                 </li>`;
     })).join('');
