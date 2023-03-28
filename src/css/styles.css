@@ -24,17 +24,42 @@ ul {
   list-style: none;
 }
 
-span {
-font-weight: 500;
-margin-left: 15px;;
-
+.countries-wrap {
+  display: flex;
+  align-items: center;
 }
 
-img {
-  margin-bottom: 10px;
+.country-name {
+  margin-left: 15px;
+  font-weight: 500;
+}
+
+.country-img {
   margin-left: 10px;
 }
 
-li {
+.country-cover {
   display: flex;
+  flex-direction: row;
+  margin-left: 50px;
+  align-items: center;
+}
+
+.country-name {
+  margin-left: 15px;
+  font-weight: 700;
+  font-size: 20px;
+  text-align: center;
+}
+
+.country-options {
+  margin-left: 10px;
+  font-weight: 500;
+  font-size: 10px;
+}
+
+.country-description {
+  font-weight: 400;
+  font-size: 10px;
+
 }
