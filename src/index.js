@@ -58,7 +58,7 @@ function showResult(data) {
 
 function countryCardMarkup(data) {
     const cardMarkup = data.map(({ flags, name, capital, population, languages }) => {
-        languages = Object.values(languages).join(", ");
+      languages = Object.values(languages).join(", ");
             return ` 
                 <div class = "country-cover">
                     <img src="${flags.svg}" alt="${name}" width="50" height="50">
